@@ -1,12 +1,12 @@
 /**
  * Copyright 2012 Twitter, Inc
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,14 +17,10 @@
 package com.nilportugues.useragent.app.parser;
 
 import java.util.Map;
+import java.util.Objects;
 
-/**
- * User Agent parsed data class
- *
- * @author Steve Jiang (@sjiang) <gh at iamsteve com>
- */
 public class UserAgent {
-    public final String family, major, minor, patch;
+    private final String family, major, minor, patch;
 
     public UserAgent(String family, String major, String minor, String patch) {
         this.family = family;
@@ -37,18 +33,37 @@ public class UserAgent {
         return new UserAgent(m.get("family"), m.get("major"), m.get("minor"), m.get("patch"));
     }
 
+    public String getFamily() {
+        return family;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public String getMinor() {
+        return minor;
+    }
+
+    public String getPatch() {
+        return patch;
+    }
+
     @Override
     public boolean equals(Object other) {
-        if (other == this)
+        if (other == this) {
             return true;
-        if (!(other instanceof UserAgent))
-            return false;
+        }
 
-        UserAgent o = (UserAgent) other;
-        return ((this.family != null && this.family.equals(o.family)) || this.family == o.family) &&
-            ((this.major != null && this.major.equals(o.major)) || this.major == o.major) &&
-            ((this.minor != null && this.minor.equals(o.minor)) || this.minor == o.minor) &&
-            ((this.patch != null && this.patch.equals(o.patch)) || this.patch == o.patch);
+        if (!(other instanceof UserAgent)) {
+            return false;
+        }
+
+        final UserAgent o = (UserAgent) other;
+        return ((this.family != null && this.family.equals(o.family)) || Objects.equals(this.family, o.family)) &&
+            ((this.major != null && this.major.equals(o.major)) || Objects.equals(this.major, o.major)) &&
+            ((this.minor != null && this.minor.equals(o.minor)) || Objects.equals(this.minor, o.minor)) &&
+            ((this.patch != null && this.patch.equals(o.patch)) || Objects.equals(this.patch, o.patch));
     }
 
     @Override

@@ -1,12 +1,12 @@
 /**
  * Copyright 2012 Twitter, Inc
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -43,6 +43,18 @@ public class UserAgentParser {
         return new UserAgentParser(configPatterns);
     }
 
+    protected static UAPattern patternFromMap(Map<String, String> configMap) {
+        String regex = configMap.get("regex");
+        if (regex == null) {
+            throw new IllegalArgumentException("User agent is missing regex");
+        }
+
+        return (new UAPattern(Pattern.compile(regex),
+            configMap.get("family_replacement"),
+            configMap.get("v1_replacement"),
+            configMap.get("v2_replacement")));
+    }
+
     public UserAgent parse(String agentString) {
         if (agentString == null) {
             return null;
@@ -55,18 +67,6 @@ public class UserAgentParser {
             }
         }
         return new UserAgent("Other", null, null, null);
-    }
-
-    protected static UAPattern patternFromMap(Map<String, String> configMap) {
-        String regex = configMap.get("regex");
-        if (regex == null) {
-            throw new IllegalArgumentException("User agent is missing regex");
-        }
-
-        return (new UAPattern(Pattern.compile(regex),
-            configMap.get("family_replacement"),
-            configMap.get("v1_replacement"),
-            configMap.get("v2_replacement")));
     }
 
     protected static class UAPattern {

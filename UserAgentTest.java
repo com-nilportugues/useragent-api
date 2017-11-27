@@ -16,21 +16,22 @@
 
 package com.nilportugues.useragent.app.parser;
 
-public class OSTest extends DataTest<OS> {
+/**
+ * @author Steve Jiang (@sjiang) <gh at iamsteve com>
+ */
+public class UserAgentTest extends DataTest<UserAgent> {
     @Override
-    protected OS getRandomInstance(long seed, StringGenerator g) {
+    protected UserAgent getRandomInstance(long seed, StringGenerator g) {
         random.setSeed(seed);
-
-        final String family = g.getString(256),
+        String family = g.getString(256),
             major = (random.nextBoolean() ? g.getString(8) : null),
             minor = (random.nextBoolean() ? g.getString(8) : null),
-            patch = (random.nextBoolean() ? g.getString(8) : null),
-            patchMinor = (random.nextBoolean() ? g.getString(8) : null);
-        return new OS(family, major, minor, patch, patchMinor);
+            patch = (random.nextBoolean() ? g.getString(8) : null);
+        return new UserAgent(family, major, minor, patch);
     }
 
     @Override
-    protected OS getBlankInstance() {
-        return new OS(null, null, null, null, null);
+    protected UserAgent getBlankInstance() {
+        return new UserAgent(null, null, null, null);
     }
 }

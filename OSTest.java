@@ -16,12 +16,14 @@
 
 package com.nilportugues.useragent.app.parser;
 
+/**
+ * @author Steve Jiang (@sjiang) <gh at iamsteve com>
+ */
 public class OSTest extends DataTest<OS> {
     @Override
     protected OS getRandomInstance(long seed, StringGenerator g) {
         random.setSeed(seed);
-
-        final String family = g.getString(256),
+        String family = g.getString(256),
             major = (random.nextBoolean() ? g.getString(8) : null),
             minor = (random.nextBoolean() ? g.getString(8) : null),
             patch = (random.nextBoolean() ? g.getString(8) : null),

@@ -16,21 +16,19 @@
 
 package com.nilportugues.useragent.app.parser;
 
-public class OSTest extends DataTest<OS> {
+/**
+ * @author Steve Jiang (@sjiang) <gh at iamsteve com>
+ */
+public class DeviceTest extends DataTest<Device> {
     @Override
-    protected OS getRandomInstance(long seed, StringGenerator g) {
+    protected Device getRandomInstance(long seed, StringGenerator g) {
         random.setSeed(seed);
-
-        final String family = g.getString(256),
-            major = (random.nextBoolean() ? g.getString(8) : null),
-            minor = (random.nextBoolean() ? g.getString(8) : null),
-            patch = (random.nextBoolean() ? g.getString(8) : null),
-            patchMinor = (random.nextBoolean() ? g.getString(8) : null);
-        return new OS(family, major, minor, patch, patchMinor);
+        String family = g.getString(256);
+        return new Device(family);
     }
 
     @Override
-    protected OS getBlankInstance() {
-        return new OS(null, null, null, null, null);
+    protected Device getBlankInstance() {
+        return new Device(null);
     }
 }
