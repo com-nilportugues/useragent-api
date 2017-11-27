@@ -26,6 +26,8 @@
 		<jackson.version>2.9.0</jackson.version>
 		<springfox.version>2.5.0</springfox.version>
 		<liquibase-slf4j.version>2.0.0</liquibase-slf4j.version>
+		<reactor.version>3.0.4.RELEASE</reactor.version>
+        <micrometer.version>1.0.0-rc.1</micrometer.version>
 	</properties>
 
 	<dependencies>
@@ -40,6 +42,34 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+        <!-- ***********************************************************
+        * METRICS. USING INFLUX.
+        * Vendor can be changed at:  https://mvnrepository.com/artifact/io.micrometer/
+        **************************************************************** -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-influx</artifactId>
+            <version>${micrometer.version}</version>
+        </dependency>
+		<!-- ***********************************************************
+       * PROD: REACTIVE STREAMS
+       **************************************************************** -->
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+			<version>${reactor.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor.addons</groupId>
+			<artifactId>reactor-adapter</artifactId>
+			<version>${reactor.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor.addons</groupId>
+			<artifactId>reactor-test</artifactId>
+			<version>${reactor.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- ***********************************************************
         * PROD: JACKSON JSON
