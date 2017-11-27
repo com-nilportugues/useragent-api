@@ -7,7 +7,6 @@
 
 ## Endpoints
 
-[GET] /me (to get the current data from the User-Agent header)
-[GET] /user-agent/?value= string
-[POST] /user-agent/
-{data: <User-Agent> string}
+- [GET] /me (to get the current data from the User-Agent header)
+- [GET] /user-agent/?value= string
+- [POST] /user-agent/ {userAgent: <User-Agent> string}
