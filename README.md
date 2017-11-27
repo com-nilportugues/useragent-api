@@ -1,8 +1,11 @@
 # production-api-user-agent
 
-Uses: 
+**Uses:**
+
 - https://github.com/ua-parser/uap-java
 - https://github.com/pieroxy/java-user-agent-detection
+
+**Responses:**
 
 - Response is in HAL+JSON.
 - Error Response is in VND+ERROR
