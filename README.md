@@ -16,3 +16,7 @@
 - [GET] /user-agent/?value=<User-Agent> string
 - [POST] /user-agent/ 
 - `{data: <User-Agent> string}`
+
+**Tech**
+- usar vert.x
+- usar swagger con vert.x
