@@ -1,0 +1,21 @@
+
+server.port: 8080
+server.compression.enabled: true
+server.compression.min-response-size: 1
+server.compression.mime-types:
+  - application/json
+  - application/xml
+  - application/xhtml+xml
+  - text/html
+  - text/xml
+  - text/plain
+
+swagger.contact.name: ""
+swagger.contact.url: ""
+swagger.contact.email: ""
+swagger.api-info.title: "User Agent API"
+swagger.api-info.description: ""
+swagger.api-info.version: "1.0.0"
+swagger.api-info.tos: ""
+swagger.api-info.license: ""
+swagger.api-info.license-url: ""
