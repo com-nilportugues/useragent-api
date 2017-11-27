@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 
-package com.nilportugues.useragent.app.parser;
+package com.nilportugues.useragent.app.modules.context.useragent.parser;
 
-/**
- * @author Steve Jiang (@sjiang) <gh at iamsteve com>
- */
-public class DeviceTest extends DataTest<Device> {
+public class OSTest extends DataTest<OS> {
     @Override
-    protected Device getRandomInstance(long seed, StringGenerator g) {
+    protected OS getRandomInstance(long seed, StringGenerator g) {
         random.setSeed(seed);
-        String family = g.getString(256);
-        return new Device(family);
+
+        final String family = g.getString(256),
+            major = (random.nextBoolean() ? g.getString(8) : null),
+            minor = (random.nextBoolean() ? g.getString(8) : null),
+            patch = (random.nextBoolean() ? g.getString(8) : null),
+            patchMinor = (random.nextBoolean() ? g.getString(8) : null);
+        return new OS(family, major, minor, patch, patchMinor);
     }
 
     @Override
-    protected Device getBlankInstance() {
-        return new Device(null);
+    protected OS getBlankInstance() {
+        return new OS(null, null, null, null, null);
     }
 }

@@ -1,8 +1,8 @@
 package com.nilportugues.useragent.app;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nilportugues.useragent.app.parser.Client;
-import com.nilportugues.useragent.app.parser.Parser;
+import com.nilportugues.useragent.app.modules.context.useragent.parser.Client;
+import com.nilportugues.useragent.app.modules.context.useragent.parser.Parser;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;

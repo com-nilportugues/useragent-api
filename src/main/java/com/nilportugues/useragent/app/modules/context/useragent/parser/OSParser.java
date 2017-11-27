@@ -1,4 +1,4 @@
-package com.nilportugues.useragent.app.parser;
+package com.nilportugues.useragent.app.modules.context.useragent.parser;
 
 import java.util.List;
 import java.util.Map;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.nilportugues.useragent.app.parser;
+package com.nilportugues.useragent.app.modules.context.useragent.parser;
 
 import org.junit.Before;
 import org.junit.Test;
