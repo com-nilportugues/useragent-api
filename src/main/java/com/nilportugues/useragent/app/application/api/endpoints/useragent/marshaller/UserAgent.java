@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserAgent implements Serializable{
+@JsonInclude
+public class UserAgent implements Serializable {
 
     @JsonProperty(value = "os")
     private OS os;

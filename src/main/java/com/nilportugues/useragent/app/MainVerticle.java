@@ -11,8 +11,6 @@ import io.vertx.ext.web.RoutingContext;
 
 public class MainVerticle extends AbstractVerticle {
 
-
-
     @Override
     public void start(Future<Void> future) {
 
@@ -24,18 +22,18 @@ public class MainVerticle extends AbstractVerticle {
                 final String userAgent = routingContext.request().getHeader("User-Agent");
 
                 try {
-                    //Query
+                    // Query
                     Parser uaParser = new Parser();
                     Client client = uaParser.parse(userAgent);
 
-                    //presenter
+                    // presenter
                     ObjectMapper objectMapper = new ObjectMapper();
                     String response = objectMapper.writeValueAsString(client);
 
                     routingContext.response()
-                            .putHeader("content-type", "application/json")
-                            .setStatusCode(200)
-                            .end(response);
+                        .putHeader("content-type", "application/json")
+                        .setStatusCode(200)
+                        .end(response);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -45,14 +43,14 @@ public class MainVerticle extends AbstractVerticle {
         });
 
         vertx.createHttpServer()
-                .requestHandler(router::accept)
-                .listen(config().getInteger("http.port", 8080),
-                        result -> {
-                            if (result.succeeded()) {
-                                future.complete();
-                            } else {
-                                future.fail(result.cause());
-                            }
-                        });
+            .requestHandler(router::accept)
+            .listen(config().getInteger("http.port", 8080),
+                result -> {
+                    if (result.succeeded()) {
+                        future.complete();
+                    } else {
+                        future.fail(result.cause());
+                    }
+                });
     }
 }

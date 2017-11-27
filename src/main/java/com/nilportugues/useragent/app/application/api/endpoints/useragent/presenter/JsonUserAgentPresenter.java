@@ -15,5 +15,4 @@ public class JsonUserAgentPresenter implements UserAgentPresenter {
         this.objectMapper = objectMapper;
     }
 
-
 }
