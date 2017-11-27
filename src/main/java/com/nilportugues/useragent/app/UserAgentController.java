@@ -32,7 +32,7 @@ public class UserAgentController {
         return ResponseEntity.ok(objectMapper.writeValueAsString(userAgent));
     }
 
-    @RequestMapping(value = "/user-agent", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/user-agent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
     public ResponseEntity<String> postUserAgent(@RequestBody final UserSearchAgent search) throws JsonProcessingException {
         final UserAgentDetectionResult userAgent = new UserAgentDetector().parseUserAgent(search.getUserAgent());
