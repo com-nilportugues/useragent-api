@@ -36,6 +36,10 @@ public class Locale {
         this.country = c;
     }
 
+    public void setCountry(String country) {
+        this.country = Country.valueOf(country);
+    }
+
     /**
      * This constructor defines both <code>kanguage</code> and <code>country</code> from their string representation.
      * Their string representation is the 2-letter ISO code for the country and the language. Thay can be provided

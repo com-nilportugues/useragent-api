@@ -8,6 +8,7 @@ import com.nilportugues.useragent.app.modules.context.useragent.model.UserAgentD
 
 import javax.inject.Named;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class UserAgent {
@@ -37,7 +38,7 @@ public class UserAgent {
         public CompletableFuture<UserAgentDetectionResult> handle(final Query query) {
             return CompletableFuture.supplyAsync(() -> {
                 final UserAgentDetectionResult userAgent = new UserAgentDetector().parseUserAgent(query.getUserAgent());
-                // fallbackLanguageFromAcceptLanguage(query, userAgent);
+                fallbackLanguageFromAcceptLanguage(query, userAgent);
                 return userAgent;
             });
         }
@@ -62,8 +63,12 @@ public class UserAgent {
             try {
                 final Locale locale = userAgent.getLocale();
                 final String localeName = locale.getLanguage().getLabel();
-                final String localeLanguage = acceptLanguageLocale.getLanguage();
-                boolean languageIsUnknown = localeName.equalsIgnoreCase("UNKNOWN");
+
+                final String localeLanguage = acceptLanguageLocale
+                        .toLanguageTag()
+                        .substring(acceptLanguageLocale.toLanguageTag().indexOf("-")+1);
+
+                boolean languageIsUnknown = Optional.ofNullable(localeName).isPresent();
 
                 if (languageIsUnknown && !Objects.equals("", localeName)) {
                     userAgent.setLocale(new Locale(localeLanguage, locale.getCountry().getLabel()));
@@ -82,7 +87,7 @@ public class UserAgent {
                 boolean countryIsUnknown = countryName.equalsIgnoreCase("UNKNOWN");
 
                 if (countryIsUnknown && !Objects.equals("", countryName)) {
-                    userAgent.setLocale(new Locale(locale.getLanguage().getLabel(), localeCountry));
+                    userAgent.getLocale().setCountry(localeCountry);
                 }
             } catch (Throwable ignored) {
                 ignored.printStackTrace();
@@ -119,10 +124,7 @@ public class UserAgent {
                     }
                 }
 
-                System.out.println(q + " - " + arr[0] + "\t " + locale.getDisplayLanguage());
                 return locale;
-                // Print the Locale and associated q-value
-                //
             }
             return null;
         }

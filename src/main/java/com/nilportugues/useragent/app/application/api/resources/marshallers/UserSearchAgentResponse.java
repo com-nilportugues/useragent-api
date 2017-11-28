@@ -361,11 +361,11 @@ public class UserSearchAgentResponse implements Serializable {
                 this.renderingEngineFullVersion = renderingEngineFullVersion;
             }
 
-            if (!String.valueOf(renderingEngineFamily).equals("")) {
+            if (!String.valueOf(renderingEngineFamily).equals("Unknown")) {
                 this.renderingEngineFamily = renderingEngineFamily;
             }
 
-            if (!String.valueOf(renderingEngineName).equals("")) {
+            if (!String.valueOf(renderingEngineName).equals("Unknown")) {
                 this.renderingEngineName = renderingEngineName;
             }
 
