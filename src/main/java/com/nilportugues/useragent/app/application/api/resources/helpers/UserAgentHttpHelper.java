@@ -15,4 +15,10 @@ public class UserAgentHttpHelper {
 
         return request.getHeader("User-Agent");
     }
+    public static String getAcceptLanguage() {
+        final ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        final HttpServletRequest request = servletRequestAttributes.getRequest();
+
+        return request.getHeader("Accept-Language");
+    }
 }

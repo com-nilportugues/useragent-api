@@ -44,7 +44,12 @@ public class GetMyUserAgentController {
 
         final String userAgentHeader = UserAgentHttpHelper.getUserAgentHeader();
         final UserAgentDetectionResult userAgent = new UserAgentDetector().parseUserAgent(userAgentHeader);
+        //@todo: set language based on this if language: UNKNOWN
+        System.out.println(UserAgentHttpHelper.getAcceptLanguage());
+
         final ObjectMapper objectMapper = new ObjectMapper();
+
+
 
         return ResponseEntity.ok(objectMapper.writeValueAsString(userAgent));
     }
