@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nilportugues.useragent.app.application.api.resources.marshallers.UserSearchAgentRequest;
 import com.nilportugues.useragent.app.application.api.resources.presenter.UserAgentPresenter;
-import com.nilportugues.useragent.app.infrastructure.cqrs.QueryBus;
+import com.nilportugues.useragent.app.infrastructure.cqrs.query.IQueryBus;
 import com.nilportugues.useragent.app.modules.context.useragent.model.UserAgentDetectionResult;
 import com.nilportugues.useragent.app.modules.context.useragent.model.UserAgentDetector;
 import io.swagger.annotations.ApiOperation;
@@ -23,11 +23,11 @@ public class PostUserAgentController {
     private static final String SWAGGER_DOC_TAG = "User Agent";
     private static final String SWAGGER_DOC = "Returns analyzed User Agent data.";
 
-    private QueryBus queryBus;
+    private IQueryBus queryBus;
     private UserAgentPresenter presenter;
 
     @Inject
-    public PostUserAgentController(QueryBus queryBus, @Named("UserAgentPresenter") UserAgentPresenter presenter) {
+    public PostUserAgentController(IQueryBus queryBus, @Named("UserAgentPresenter") UserAgentPresenter presenter) {
         this.queryBus = queryBus;
         this.presenter = presenter;
     }
