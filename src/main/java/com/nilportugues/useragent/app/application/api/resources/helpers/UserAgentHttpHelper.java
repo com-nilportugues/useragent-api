@@ -9,16 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 @Named
 public class UserAgentHttpHelper {
 
-    public static String getUserAgentHeader() {
+    public static String getHeader(final String headerName) {
         final ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         final HttpServletRequest request = servletRequestAttributes.getRequest();
 
-        return request.getHeader("User-Agent");
-    }
-    public static String getAcceptLanguage() {
-        final ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-        final HttpServletRequest request = servletRequestAttributes.getRequest();
-
-        return request.getHeader("Accept-Language");
+        return request.getHeader(headerName);
     }
 }

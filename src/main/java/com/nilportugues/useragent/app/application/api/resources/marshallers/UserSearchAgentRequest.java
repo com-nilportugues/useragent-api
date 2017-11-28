@@ -13,8 +13,12 @@ import java.io.Serializable;
 public class UserSearchAgentRequest implements Serializable {
 
     @JsonProperty(value = "userAgent")
-    @ApiModelProperty(name = "userAgent", required = false, position = 0)
+    @ApiModelProperty(name = "userAgent", required = true, position = 0)
     private String userAgent;
+
+    @JsonProperty(value = "acceptLanguage")
+    @ApiModelProperty(name = "acceptLanguage", required = false, position = 1)
+    private String acceptLanguage;
 
     public UserSearchAgentRequest() {
     }
@@ -27,5 +31,15 @@ public class UserSearchAgentRequest implements Serializable {
     @JsonIgnore
     public String getUserAgent() {
         return userAgent;
+    }
+
+    @JsonIgnore
+    public String getAcceptLanguage() {
+        return acceptLanguage;
+    }
+
+    @JsonIgnore
+    public void setAcceptLanguage(String acceptLanguage) {
+        this.acceptLanguage = acceptLanguage;
     }
 }
