@@ -154,27 +154,27 @@ public class UserSearchAgentResponse implements Serializable {
             final String description,
             final String version) {
 
-            if (!String.valueOf(vendor).equals("Unknown")) {
+            if (!String.valueOf(vendor).equalsIgnoreCase("Unknown")) {
                 this.vendor = vendor;
             }
 
-            if (!String.valueOf(family).equals("")) {
+            if (!String.valueOf(family).equalsIgnoreCase("")) {
                 this.family = family;
             }
 
-            if (!String.valueOf(description).equals("")) {
+            if (!String.valueOf(description).equalsIgnoreCase("")) {
                 this.description = description;
             }
 
-            if (!String.valueOf(version).equals("")) {
+            if (!String.valueOf(version).equalsIgnoreCase("")) {
                 this.version = version;
             }
 
-            if (!String.valueOf(website).equals("")) {
+            if (!String.valueOf(website).equalsIgnoreCase("")) {
                 this.website = website;
             }
 
-            if (!String.valueOf(version).equals("")) {
+            if (!String.valueOf(version).equalsIgnoreCase("")) {
                 this.version = version;
             }
 
@@ -333,47 +333,47 @@ public class UserSearchAgentResponse implements Serializable {
             final boolean isRenderingEngineWebKitBased,
             final boolean inWebView) {
 
-            if (!String.valueOf(version).equals("")) {
+            if (!String.valueOf(version).equalsIgnoreCase("")) {
                 this.version = version;
             }
 
-            if (!String.valueOf(fullVersion).equals("")) {
+            if (!String.valueOf(fullVersion).equalsIgnoreCase("")) {
                 this.fullVersion = fullVersion;
             }
 
-            if (!String.valueOf(vendorName).equals("Unknown")) {
+            if (!String.valueOf(vendorName).equalsIgnoreCase("Unknown")) {
                 this.vendorName = vendorName;
             }
 
-            if (!String.valueOf(familyName).equals("")) {
+            if (!String.valueOf(familyName).equalsIgnoreCase("")) {
                 this.familyName = familyName;
             }
 
-            if (!String.valueOf(description).equals("")) {
+            if (!String.valueOf(description).equalsIgnoreCase("")) {
                 this.description = description;
             }
 
-            if (!String.valueOf(renderingEngineVersion).equals("")) {
+            if (!String.valueOf(renderingEngineVersion).equalsIgnoreCase("")) {
                 this.renderingEngineVersion = renderingEngineVersion;
             }
 
-            if (!String.valueOf(renderingEngineFullVersion).equals("")) {
+            if (!String.valueOf(renderingEngineFullVersion).equalsIgnoreCase("")) {
                 this.renderingEngineFullVersion = renderingEngineFullVersion;
             }
 
-            if (!String.valueOf(renderingEngineFamily).equals("Unknown")) {
+            if (!String.valueOf(renderingEngineFamily).equalsIgnoreCase("Unknown")) {
                 this.renderingEngineFamily = renderingEngineFamily;
             }
 
-            if (!String.valueOf(renderingEngineName).equals("Unknown")) {
+            if (!String.valueOf(renderingEngineName).equalsIgnoreCase("Unknown")) {
                 this.renderingEngineName = renderingEngineName;
             }
 
-            if (!String.valueOf(renderingEngineWebsite).equals("")) {
+            if (!String.valueOf(renderingEngineWebsite).equalsIgnoreCase("")) {
                 this.renderingEngineWebsite = renderingEngineWebsite;
             }
 
-            if (!String.valueOf(vendorWebsite).equals("")) {
+            if (!String.valueOf(vendorWebsite).equalsIgnoreCase("")) {
                 this.vendorWebsite = vendorWebsite;
             }
 
@@ -670,31 +670,31 @@ public class UserSearchAgentResponse implements Serializable {
             final String device,
             final boolean touch) {
 
-            if (!String.valueOf(deviceType).equals("")) {
+            if (!String.valueOf(deviceType).equalsIgnoreCase("Unknown")) {
                 this.deviceType = deviceType;
             }
 
-            if (!String.valueOf(brand).equals("Unknown")) {
+            if (!String.valueOf(brand).equalsIgnoreCase("Unknown")) {
                 this.brand = brand;
             }
 
-            if (!String.valueOf(brandWebsite).equals("")) {
+            if (!String.valueOf(brandWebsite).equalsIgnoreCase("")) {
                 this.brandWebsite = brandWebsite;
             }
 
-            if (!String.valueOf(manufacturer).equals("Unknown")) {
+            if (!String.valueOf(manufacturer).equalsIgnoreCase("Unknown")) {
                 this.manufacturer = manufacturer;
             }
 
-            if (!String.valueOf(manufacturerWebsite).equals("")) {
+            if (!String.valueOf(manufacturerWebsite).equalsIgnoreCase("")) {
                 this.manufacturerWebsite = manufacturerWebsite;
             }
 
-            if (!String.valueOf(architecture).equals("")) {
+            if (!String.valueOf(architecture).equalsIgnoreCase("")) {
                 this.architecture = architecture;
             }
 
-            if (!String.valueOf(device).equals("")) {
+            if (!String.valueOf(device).equalsIgnoreCase("")) {
                 this.device = device;
             }
 
