@@ -26,7 +26,8 @@ public class JsonUserAgentPresenter implements UserAgentPresenter {
         try {
             return format(new UserSearchAgentResponse(result));
         } catch (Exception e) {
-            return internalServerError(e);
+            e.printStackTrace();
+            return internalServerError();
         }
     }
 
