@@ -2,6 +2,7 @@ package com.nilportugues.useragent.app.application.api.resources;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nilportugues.useragent.app.application.api.resources.helpers.UserAgentHttpHelper;
 import com.nilportugues.useragent.app.application.api.resources.presenter.UserAgentPresenter;
 import com.nilportugues.useragent.app.infrastructure.cqrs.query.IQueryBus;
 import com.nilportugues.useragent.app.modules.context.useragent.model.UserAgentDetectionResult;
@@ -39,8 +40,9 @@ public class GetMyUserAgentController {
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 500, message = "Internal Server Error")
     })
-    public ResponseEntity<String> getAction(@RequestHeader(value = "User-Agent") final String userAgentHeader) throws JsonProcessingException {
+    public ResponseEntity<String> getAction() throws JsonProcessingException {
 
+        final String userAgentHeader = UserAgentHttpHelper.getUserAgentHeader();
         final UserAgentDetectionResult userAgent = new UserAgentDetector().parseUserAgent(userAgentHeader);
         final ObjectMapper objectMapper = new ObjectMapper();
 
