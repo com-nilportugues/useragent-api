@@ -14,9 +14,9 @@ public class MetricsModule {
     @Bean
     public InfluxMetricsConfig getInfluxConfig() {
         return new InfluxMetricsConfig(
-            "chat_metrics",
-            "chat_user",
-            "chat_password",
+            "useragent_metrics",
+            "useragent_user",
+            "useragent_password",
             10);
     }
 

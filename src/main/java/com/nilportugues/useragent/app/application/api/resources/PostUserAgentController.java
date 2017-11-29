@@ -1,5 +1,6 @@
 package com.nilportugues.useragent.app.application.api.resources;
 
+import com.nilportugues.useragent.app.application.api.resources.marshallers.InternalServerError;
 import com.nilportugues.useragent.app.application.api.resources.marshallers.UserSearchAgentRequest;
 import com.nilportugues.useragent.app.application.api.resources.marshallers.UserSearchAgentResponse;
 import com.nilportugues.useragent.app.application.api.resources.presenter.UserAgentPresenter;
@@ -38,7 +39,7 @@ public class PostUserAgentController {
     @ResponseStatus(value = HttpStatus.OK)
     @ApiResponses({
         @ApiResponse(code = 200, message = "OK", response = UserSearchAgentResponse.class),
-        @ApiResponse(code = 500, message = "Internal Server Error")
+        @ApiResponse(code = 500, message = "Internal Server Error", response = InternalServerError.class)
     })
     public Future<ResponseEntity<String>> postAction(@RequestBody final UserSearchAgentRequest search) throws Exception {
 

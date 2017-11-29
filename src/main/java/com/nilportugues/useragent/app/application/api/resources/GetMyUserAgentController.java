@@ -1,11 +1,10 @@
 package com.nilportugues.useragent.app.application.api.resources;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nilportugues.useragent.app.application.api.resources.helpers.UserAgentHttpHelper;
+import com.nilportugues.useragent.app.application.api.resources.marshallers.InternalServerError;
 import com.nilportugues.useragent.app.application.api.resources.marshallers.UserSearchAgentResponse;
 import com.nilportugues.useragent.app.application.api.resources.presenter.UserAgentPresenter;
 import com.nilportugues.useragent.app.infrastructure.cqrs.query.IQueryBus;
-import com.nilportugues.useragent.app.modules.context.useragent.infrastructure.devicedetection.DeviceDetectionService;
 import com.nilportugues.useragent.app.modules.context.useragent.model.UserAgentDetectionResult;
 import com.nilportugues.useragent.app.modules.context.useragent.queries.UserAgent;
 import io.swagger.annotations.ApiOperation;
@@ -44,7 +43,7 @@ public class GetMyUserAgentController {
     @ResponseStatus(value = HttpStatus.OK)
     @ApiResponses({
         @ApiResponse(code = 200, message = "OK", response = UserSearchAgentResponse.class),
-        @ApiResponse(code = 500, message = "Internal Server Error")
+        @ApiResponse(code = 500, message = "Internal Server Error", response = InternalServerError.class)
     })
     public Future<ResponseEntity<String>> getAction() throws Exception {
 
