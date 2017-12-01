@@ -314,6 +314,16 @@ public class UserSearchAgentResponse implements Serializable {
         @ApiModelProperty(name = "isWebkit", position = 18)
         private final boolean isWebkit;
 
+        @JsonProperty(value = "vendor")
+        @ApiModelProperty(name = "vendor", position = 19)
+        private final Vendor vendor;
+
+
+        @JsonProperty(value = "renderingEngine")
+        @ApiModelProperty(name = "renderingEngine", position = 20)
+        private final RenderingEngine renderingEngine;
+
+
 
         public static class RenderingEngine implements Serializable {
 
@@ -350,12 +360,32 @@ public class UserSearchAgentResponse implements Serializable {
             private final boolean isWebKitBased;
 
             public RenderingEngine(String version, String fullVersion, String name, String website, String vendor, String family, boolean isTridentBased, boolean isWebKitBased) {
-                this.version = version;
-                this.fullVersion = fullVersion;
-                this.name = name;
-                this.website = website;
-                this.vendor = vendor;
-                this.family = family;
+
+
+                if (!String.valueOf(version).equalsIgnoreCase("")) {
+                    this.version = version;
+                }
+
+                if (!String.valueOf(fullVersion).equalsIgnoreCase("")) {
+                    this.fullVersion = fullVersion;
+                }
+
+                if (!String.valueOf(family).equalsIgnoreCase("Unknown")) {
+                    this.family = family;
+                }
+
+                if (!String.valueOf(name).equalsIgnoreCase("Unknown")) {
+                    this.name = name;
+                }
+
+                if (!String.valueOf(website).equalsIgnoreCase("")) {
+                    this.website = website;
+                }
+
+                if (!String.valueOf(vendor).equalsIgnoreCase("")) {
+                    this.vendor = vendor;
+                }
+
                 this.isTridentBased = isTridentBased;
                 this.isWebKitBased = isWebKitBased;
             }
@@ -405,8 +435,13 @@ public class UserSearchAgentResponse implements Serializable {
             private String website = null;
 
             public Vendor(String name, String website) {
-                this.name = name;
-                this.website = website;
+
+                if (!String.valueOf(name).equalsIgnoreCase("Unknown")) {
+                    this.name = name;
+                }
+                if (!String.valueOf(website).equalsIgnoreCase("")) {
+                    this.website = website;
+                }
             }
 
             @JsonIgnore
@@ -447,9 +482,6 @@ public class UserSearchAgentResponse implements Serializable {
                 this.fullVersion = fullVersion;
             }
 
-            if (!String.valueOf(vendorName).equalsIgnoreCase("Unknown")) {
-                this.vendorName = vendorName;
-            }
 
             if (!String.valueOf(familyName).equalsIgnoreCase("")) {
                 this.familyName = familyName;
@@ -459,29 +491,19 @@ public class UserSearchAgentResponse implements Serializable {
                 this.description = description;
             }
 
-            if (!String.valueOf(renderingEngineVersion).equalsIgnoreCase("")) {
-                this.renderingEngineVersion = renderingEngineVersion;
-            }
 
-            if (!String.valueOf(renderingEngineFullVersion).equalsIgnoreCase("")) {
-                this.renderingEngineFullVersion = renderingEngineFullVersion;
-            }
+            this.renderingEngine = new RenderingEngine(
+                    renderingEngineVersion,
+                    renderingEngineFullVersion,
+                    renderingEngineName,
+                    renderingEngineWebsite,
+                    renderingEngineVendor,
+                    renderingEngineFamily,
+                    isRenderingEngineTridentBased,
+                    isRenderingEngineWebKitBased
+            );
 
-            if (!String.valueOf(renderingEngineFamily).equalsIgnoreCase("Unknown")) {
-                this.renderingEngineFamily = renderingEngineFamily;
-            }
-
-            if (!String.valueOf(renderingEngineName).equalsIgnoreCase("Unknown")) {
-                this.renderingEngineName = renderingEngineName;
-            }
-
-            if (!String.valueOf(renderingEngineWebsite).equalsIgnoreCase("")) {
-                this.renderingEngineWebsite = renderingEngineWebsite;
-            }
-
-            if (!String.valueOf(vendorWebsite).equalsIgnoreCase("")) {
-                this.vendorWebsite = vendorWebsite;
-            }
+            this.vendor = new Vendor(vendorName, vendorWebsite);
 
             this.isRenderingEngineTridentBased = isRenderingEngineTridentBased;
             this.isRenderingEngineWebKitBased = isRenderingEngineWebKitBased;
