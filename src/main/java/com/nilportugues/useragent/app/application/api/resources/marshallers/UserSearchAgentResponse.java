@@ -314,6 +314,112 @@ public class UserSearchAgentResponse implements Serializable {
         @ApiModelProperty(name = "isWebkit", position = 18)
         private final boolean isWebkit;
 
+
+        public static class RenderingEngine implements Serializable {
+
+            @JsonProperty(value = "version")
+            @ApiModelProperty(name = "version", position = 6)
+            private String version = null;
+
+            @JsonProperty(value = "fullVersion")
+            @ApiModelProperty(name = "fullVersion", position = 7)
+            private String fullVersion = null;
+
+            @JsonProperty(value = "name")
+            @ApiModelProperty(name = "name", position = 8)
+            private String name = null;
+
+            @JsonProperty(value = "website")
+            @ApiModelProperty(name = "website", position = 9)
+            private String website = null;
+
+            @JsonProperty(value = "vendor")
+            @ApiModelProperty(name = "vendor", position = 10)
+            private String vendor = null;
+
+            @JsonProperty(value = "family")
+            @ApiModelProperty(name = "family", position = 11)
+            private String family = null;
+
+            @JsonProperty(value = "isTridentBased")
+            @ApiModelProperty(name = "isTridentBased", position = 12)
+            private final boolean isTridentBased;
+
+            @JsonProperty(value = "isWebKitBased")
+            @ApiModelProperty(name = "isWebKitBased", position = 13)
+            private final boolean isWebKitBased;
+
+            public RenderingEngine(String version, String fullVersion, String name, String website, String vendor, String family, boolean isTridentBased, boolean isWebKitBased) {
+                this.version = version;
+                this.fullVersion = fullVersion;
+                this.name = name;
+                this.website = website;
+                this.vendor = vendor;
+                this.family = family;
+                this.isTridentBased = isTridentBased;
+                this.isWebKitBased = isWebKitBased;
+            }
+
+            @JsonIgnore
+            public String getVersion() {
+                return version;
+            }
+            @JsonIgnore
+            public String getFullVersion() {
+                return fullVersion;
+            }
+            @JsonIgnore
+            public String getName() {
+                return name;
+            }
+            @JsonIgnore
+            public String getWebsite() {
+                return website;
+            }
+            @JsonIgnore
+            public String getVendor() {
+                return vendor;
+            }
+            @JsonIgnore
+            public String getFamily() {
+                return family;
+            }
+            @JsonIgnore
+            public boolean isTridentBased() {
+                return isTridentBased;
+            }
+            @JsonIgnore
+            public boolean isWebKitBased() {
+                return isWebKitBased;
+            }
+        }
+
+        private static class Vendor implements Serializable {
+
+            @JsonProperty(value = "name")
+            @ApiModelProperty(name = "name", position = 2)
+            private String name = null;
+
+            @JsonProperty(value = "website")
+            @ApiModelProperty(name = "website", position = 3)
+            private String website = null;
+
+            public Vendor(String name, String website) {
+                this.name = name;
+                this.website = website;
+            }
+
+            @JsonIgnore
+            public String getName() {
+                return name;
+            }
+
+            @JsonIgnore
+            public String getWebsite() {
+                return website;
+            }
+        }
+
         public Browser(final String version,
             final String fullVersion,
             final String description,
@@ -659,6 +765,58 @@ public class UserSearchAgentResponse implements Serializable {
         @JsonProperty(value = "hasTouchScreen")
         @ApiModelProperty(name = "hasTouchScreen", position = 8)
         private boolean touch;
+
+
+        private static class Brand implements Serializable {
+            @JsonProperty(value = "name")
+            @ApiModelProperty(name = "name", position = 1)
+            private String name = null;
+
+            @JsonProperty(value = "website")
+            @ApiModelProperty(name = "website", position = 2)
+            private String website = null;
+
+            public Brand(String name, String website) {
+                this.name = name;
+                this.website = website;
+            }
+
+            @JsonIgnore
+            public String getName() {
+                return name;
+            }
+
+            @JsonIgnore
+            public String getWebsite() {
+                return website;
+            }
+        }
+
+        private static class Manufacturer implements Serializable {
+            @JsonProperty(value = "name")
+            @ApiModelProperty(name = "name", position = 1)
+            private String name = null;
+
+            @JsonProperty(value = "website")
+            @ApiModelProperty(name = "website", position = 2)
+            private String website = null;
+
+            public Manufacturer(String name, String website) {
+                this.name = name;
+                this.website = website;
+            }
+
+            @JsonIgnore
+            public String getName() {
+                return name;
+            }
+
+            @JsonIgnore
+            public String getWebsite() {
+                return website;
+            }
+        }
+
 
         public Device(final String deviceType,
             final boolean mobile,
