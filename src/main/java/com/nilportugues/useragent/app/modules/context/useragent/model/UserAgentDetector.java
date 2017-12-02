@@ -3288,7 +3288,7 @@ public class UserAgentDetector implements IUserAgentDetector {
             }
         }
         /*
-         * if (result.getOperatingSystem().getFamilyName() == OSFamily.WINDOWS_NT) {
+         * if (result.getOperatingSystem().getName() == OSFamily.WINDOWS_NT) {
          * if (context.consume("BO[0-9]?IE[89](_v[0-9]+)?", MatchingType.REGEXP, MatchingRegion.PARENTHESIS) ||
          * context.contains("msn OptimizedIE8", MatchingType.EQUALS, MatchingRegion.CONSUMED)) {
          * Iterator<String> it = context.getParenTokensIterator();

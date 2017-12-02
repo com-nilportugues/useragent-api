@@ -54,7 +54,7 @@ public class UserAgent {
                     countryLocaleFromAcceptLanguage(userAgent, acceptLanguageLocale);
                 }
             } catch (Throwable ignored) {
-                ignored.printStackTrace();
+                // ignored.printStackTrace();
             }
         }
 
@@ -65,8 +65,8 @@ public class UserAgent {
                 final String localeName = locale.getLanguage().getLabel();
 
                 final String localeLanguage = acceptLanguageLocale
-                        .toLanguageTag()
-                        .substring(acceptLanguageLocale.toLanguageTag().indexOf("-")+1);
+                    .toLanguageTag()
+                    .substring(acceptLanguageLocale.toLanguageTag().indexOf("-") + 1);
 
                 boolean languageIsUnknown = Optional.ofNullable(localeName).isPresent();
 
@@ -74,7 +74,7 @@ public class UserAgent {
                     userAgent.setLocale(new Locale(localeLanguage, locale.getCountry().getLabel()));
                 }
             } catch (Throwable ignored) {
-                ignored.printStackTrace();
+                // ignored.printStackTrace();
             }
         }
 
@@ -90,7 +90,7 @@ public class UserAgent {
                     userAgent.getLocale().setCountry(localeCountry);
                 }
             } catch (Throwable ignored) {
-                ignored.printStackTrace();
+                // ignored.printStackTrace();
             }
         }
 

@@ -39,7 +39,7 @@ public class GetMyUserAgentController {
     }
 
     @ApiOperation(value = SWAGGER_DOC, tags = {SWAGGER_DOC_TAG})
-    @RequestMapping(value = "/me", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/useragent/me", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
     @ApiResponses({
         @ApiResponse(code = 200, message = "OK", response = UserSearchAgentResponse.class),

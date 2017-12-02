@@ -35,7 +35,7 @@ public class PostUserAgentController {
     }
 
     @ApiOperation(value = SWAGGER_DOC, tags = {SWAGGER_DOC_TAG})
-    @RequestMapping(value = "/user-agent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/useragent/useragent", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.OK)
     @ApiResponses({
         @ApiResponse(code = 200, message = "OK", response = UserSearchAgentResponse.class),

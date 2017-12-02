@@ -131,9 +131,9 @@ public class UserSearchAgentResponse implements Serializable {
         @ApiModelProperty(name = "website", position = 1)
         private String website;
 
-        @JsonProperty(value = "familyName")
-        @ApiModelProperty(name = "familyName", position = 1)
-        private String family;
+        @JsonProperty(value = "name")
+        @ApiModelProperty(name = "name", position = 1)
+        private String name;
 
         @JsonProperty(value = "description")
         @ApiModelProperty(name = "description", position = 2)
@@ -159,7 +159,7 @@ public class UserSearchAgentResponse implements Serializable {
             }
 
             if (!String.valueOf(family).equalsIgnoreCase("")) {
-                this.family = family;
+                this.name = family;
             }
 
             if (!String.valueOf(description).equalsIgnoreCase("")) {
@@ -209,12 +209,12 @@ public class UserSearchAgentResponse implements Serializable {
         }
 
         @JsonIgnore
-        public String getFamily() {
-            return family;
+        public String getName() {
+            return name;
         }
 
-        public void setFamily(final String family) {
-            this.family = family;
+        public void setName(final String name) {
+            this.name = name;
         }
 
         @JsonIgnore
@@ -246,53 +246,13 @@ public class UserSearchAgentResponse implements Serializable {
         @ApiModelProperty(name = "fullVersion", position = 1)
         private String fullVersion = null;
 
-        @JsonProperty(value = "vendorName")
-        @ApiModelProperty(name = "vendorName", position = 2)
-        private String vendorName = null;
-
-        @JsonProperty(value = "vendorWebsite")
-        @ApiModelProperty(name = "vendorWebsite", position = 3)
-        private String vendorWebsite = null;
-
-        @JsonProperty(value = "familyName")
-        @ApiModelProperty(name = "familyName", position = 4)
-        private String familyName = null;
+        @JsonProperty(value = "name")
+        @ApiModelProperty(name = "name", position = 4)
+        private String name = null;
 
         @JsonProperty(value = "description")
         @ApiModelProperty(name = "description", position = 5)
         private String description = null;
-
-        @JsonProperty(value = "renderingEngineVersion")
-        @ApiModelProperty(name = "renderingEngineVersion", position = 6)
-        private String renderingEngineVersion = null;
-
-        @JsonProperty(value = "renderingEngineFullVersion")
-        @ApiModelProperty(name = "renderingEngineFullVersion", position = 7)
-        private String renderingEngineFullVersion = null;
-
-        @JsonProperty(value = "renderingEngineName")
-        @ApiModelProperty(name = "renderingEngineName", position = 8)
-        private String renderingEngineName = null;
-
-        @JsonProperty(value = "renderingEngineWebsite")
-        @ApiModelProperty(name = "renderingEngineWebsite", position = 9)
-        private String renderingEngineWebsite = null;
-
-        @JsonProperty(value = "renderingEngineVendor")
-        @ApiModelProperty(name = "renderingEngineVendor", position = 10)
-        private String renderingEngineVendor = null;
-
-        @JsonProperty(value = "renderingEngineFamily")
-        @ApiModelProperty(name = "renderingEngineFamily", position = 11)
-        private String renderingEngineFamily = null;
-
-        @JsonProperty(value = "isRenderingEngineTridentBased")
-        @ApiModelProperty(name = "isRenderingEngineTridentBased", position = 12)
-        private final boolean isRenderingEngineTridentBased;
-
-        @JsonProperty(value = "isRenderingEngineWebKitBased")
-        @ApiModelProperty(name = "isRenderingEngineWebKitBased", position = 13)
-        private final boolean isRenderingEngineWebKitBased;
 
         @JsonProperty(value = "isWebView")
         @ApiModelProperty(name = "isWebView", position = 14)
@@ -318,149 +278,16 @@ public class UserSearchAgentResponse implements Serializable {
         @ApiModelProperty(name = "vendor", position = 19)
         private final Vendor vendor;
 
-
         @JsonProperty(value = "renderingEngine")
         @ApiModelProperty(name = "renderingEngine", position = 20)
         private final RenderingEngine renderingEngine;
-
-
-
-        public static class RenderingEngine implements Serializable {
-
-            @JsonProperty(value = "version")
-            @ApiModelProperty(name = "version", position = 6)
-            private String version = null;
-
-            @JsonProperty(value = "fullVersion")
-            @ApiModelProperty(name = "fullVersion", position = 7)
-            private String fullVersion = null;
-
-            @JsonProperty(value = "name")
-            @ApiModelProperty(name = "name", position = 8)
-            private String name = null;
-
-            @JsonProperty(value = "website")
-            @ApiModelProperty(name = "website", position = 9)
-            private String website = null;
-
-            @JsonProperty(value = "vendor")
-            @ApiModelProperty(name = "vendor", position = 10)
-            private String vendor = null;
-
-            @JsonProperty(value = "family")
-            @ApiModelProperty(name = "family", position = 11)
-            private String family = null;
-
-            @JsonProperty(value = "isTridentBased")
-            @ApiModelProperty(name = "isTridentBased", position = 12)
-            private final boolean isTridentBased;
-
-            @JsonProperty(value = "isWebKitBased")
-            @ApiModelProperty(name = "isWebKitBased", position = 13)
-            private final boolean isWebKitBased;
-
-            public RenderingEngine(String version, String fullVersion, String name, String website, String vendor, String family, boolean isTridentBased, boolean isWebKitBased) {
-
-
-                if (!String.valueOf(version).equalsIgnoreCase("")) {
-                    this.version = version;
-                }
-
-                if (!String.valueOf(fullVersion).equalsIgnoreCase("")) {
-                    this.fullVersion = fullVersion;
-                }
-
-                if (!String.valueOf(family).equalsIgnoreCase("Unknown")) {
-                    this.family = family;
-                }
-
-                if (!String.valueOf(name).equalsIgnoreCase("Unknown")) {
-                    this.name = name;
-                }
-
-                if (!String.valueOf(website).equalsIgnoreCase("")) {
-                    this.website = website;
-                }
-
-                if (!String.valueOf(vendor).equalsIgnoreCase("")) {
-                    this.vendor = vendor;
-                }
-
-                this.isTridentBased = isTridentBased;
-                this.isWebKitBased = isWebKitBased;
-            }
-
-            @JsonIgnore
-            public String getVersion() {
-                return version;
-            }
-            @JsonIgnore
-            public String getFullVersion() {
-                return fullVersion;
-            }
-            @JsonIgnore
-            public String getName() {
-                return name;
-            }
-            @JsonIgnore
-            public String getWebsite() {
-                return website;
-            }
-            @JsonIgnore
-            public String getVendor() {
-                return vendor;
-            }
-            @JsonIgnore
-            public String getFamily() {
-                return family;
-            }
-            @JsonIgnore
-            public boolean isTridentBased() {
-                return isTridentBased;
-            }
-            @JsonIgnore
-            public boolean isWebKitBased() {
-                return isWebKitBased;
-            }
-        }
-
-        private static class Vendor implements Serializable {
-
-            @JsonProperty(value = "name")
-            @ApiModelProperty(name = "name", position = 2)
-            private String name = null;
-
-            @JsonProperty(value = "website")
-            @ApiModelProperty(name = "website", position = 3)
-            private String website = null;
-
-            public Vendor(String name, String website) {
-
-                if (!String.valueOf(name).equalsIgnoreCase("Unknown")) {
-                    this.name = name;
-                }
-                if (!String.valueOf(website).equalsIgnoreCase("")) {
-                    this.website = website;
-                }
-            }
-
-            @JsonIgnore
-            public String getName() {
-                return name;
-            }
-
-            @JsonIgnore
-            public String getWebsite() {
-                return website;
-            }
-        }
 
         public Browser(final String version,
             final String fullVersion,
             final String description,
             final String vendorName,
             final String vendorWebsite,
-            final String familyName,
+            final String name,
             final boolean isGecko,
             final boolean isRobot,
             final boolean isTrident,
@@ -482,31 +309,25 @@ public class UserSearchAgentResponse implements Serializable {
                 this.fullVersion = fullVersion;
             }
 
-
-            if (!String.valueOf(familyName).equalsIgnoreCase("")) {
-                this.familyName = familyName;
+            if (!String.valueOf(name).equalsIgnoreCase("")) {
+                this.name = name;
             }
 
             if (!String.valueOf(description).equalsIgnoreCase("")) {
                 this.description = description;
             }
 
-
             this.renderingEngine = new RenderingEngine(
-                    renderingEngineVersion,
-                    renderingEngineFullVersion,
-                    renderingEngineName,
-                    renderingEngineWebsite,
-                    renderingEngineVendor,
-                    renderingEngineFamily,
-                    isRenderingEngineTridentBased,
-                    isRenderingEngineWebKitBased
-            );
+                renderingEngineVersion,
+                renderingEngineFullVersion,
+                renderingEngineName,
+                renderingEngineWebsite,
+                renderingEngineFamily,
+                isRenderingEngineTridentBased,
+                isRenderingEngineWebKitBased);
 
             this.vendor = new Vendor(vendorName, vendorWebsite);
 
-            this.isRenderingEngineTridentBased = isRenderingEngineTridentBased;
-            this.isRenderingEngineWebKitBased = isRenderingEngineWebKitBased;
             this.inWebView = inWebView;
             this.isGecko = isGecko;
             this.isRobot = isRobot;
@@ -515,28 +336,13 @@ public class UserSearchAgentResponse implements Serializable {
         }
 
         @JsonIgnore
-        public String getVendorWebsite() {
-            return vendorWebsite;
+        public Vendor getVendor() {
+            return vendor;
         }
 
         @JsonIgnore
-        public String getRenderingEngineName() {
-            return renderingEngineName;
-        }
-
-        @JsonIgnore
-        public String getRenderingEngineWebsite() {
-            return renderingEngineWebsite;
-        }
-
-        @JsonIgnore
-        public boolean isRenderingEngineTridentBased() {
-            return isRenderingEngineTridentBased;
-        }
-
-        @JsonIgnore
-        public boolean isRenderingEngineWebKitBased() {
-            return isRenderingEngineWebKitBased;
+        public RenderingEngine getRenderingEngine() {
+            return renderingEngine;
         }
 
         @JsonIgnore
@@ -564,35 +370,14 @@ public class UserSearchAgentResponse implements Serializable {
             return version;
         }
 
-        public void setVersion(String version) {
-            this.version = version;
-        }
-
         @JsonIgnore
         public String getFullVersion() {
             return fullVersion;
         }
 
-        public void setFullVersion(String fullVersion) {
-            this.fullVersion = fullVersion;
-        }
-
         @JsonIgnore
-        public String getVendorName() {
-            return vendorName;
-        }
-
-        public void setVendorName(String vendorName) {
-            this.vendorName = vendorName;
-        }
-
-        @JsonIgnore
-        public String getFamilyName() {
-            return familyName;
-        }
-
-        public void setFamilyName(String familyName) {
-            this.familyName = familyName;
+        public String getName() {
+            return name;
         }
 
         @JsonIgnore
@@ -600,54 +385,11 @@ public class UserSearchAgentResponse implements Serializable {
             return description;
         }
 
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        @JsonIgnore
-        public String getRenderingEngineVersion() {
-            return renderingEngineVersion;
-        }
-
-        public void setRenderingEngineVersion(String renderingEngineVersion) {
-            this.renderingEngineVersion = renderingEngineVersion;
-        }
-
-        @JsonIgnore
-        public String getRenderingEngineFullVersion() {
-            return renderingEngineFullVersion;
-        }
-
-        public void setRenderingEngineFullVersion(String renderingEngineFullVersion) {
-            this.renderingEngineFullVersion = renderingEngineFullVersion;
-        }
-
-        @JsonIgnore
-        public String getRenderingEngineVendor() {
-            return renderingEngineVendor;
-        }
-
-        public void setRenderingEngineVendor(String renderingEngineVendor) {
-            this.renderingEngineVendor = renderingEngineVendor;
-        }
-
-        @JsonIgnore
-        public String getRenderingEngineFamily() {
-            return renderingEngineFamily;
-        }
-
-        public void setRenderingEngineFamily(String renderingEngineFamily) {
-            this.renderingEngineFamily = renderingEngineFamily;
-        }
-
         @JsonIgnore
         public boolean isInWebView() {
             return inWebView;
         }
 
-        public void setInWebView(boolean inWebView) {
-            this.inWebView = inWebView;
-        }
     }
 
     private static class Bot implements Serializable {
@@ -664,8 +406,8 @@ public class UserSearchAgentResponse implements Serializable {
         @ApiModelProperty(name = "isEvil", position = 1)
         private boolean isNefarius;
 
-        @JsonProperty(value = "familyName")
-        @ApiModelProperty(name = "familyName", position = 3)
+        @JsonProperty(value = "name")
+        @ApiModelProperty(name = "name", position = 3)
         private String family = null;
 
         @JsonProperty(value = "description")
@@ -750,44 +492,36 @@ public class UserSearchAgentResponse implements Serializable {
             this.url = url;
         }
     }
+
     private static class Device implements Serializable {
 
         @JsonProperty(value = "vendor")
         @ApiModelProperty(name = "vendor", position = 0)
         private String deviceType = null;
 
-        @JsonProperty(value = "brandName")
-        @ApiModelProperty(name = "brandName", position = 1)
-        private String brand = null;
-
-        @JsonProperty(value = "brandWebsite")
-        @ApiModelProperty(name = "brandWebsite", position = 2)
-        private String brandWebsite = null;
-
-        @JsonProperty(value = "manufacturerName")
-        @ApiModelProperty(name = "manufacturerName", position = 3)
-        private String manufacturer = null;
-
-        @JsonProperty(value = "manufacturerWebsite")
-        @ApiModelProperty(name = "manufacturerWebsite", position = 4)
-        private String manufacturerWebsite = null;
-
         @JsonProperty(value = "architecture")
-        @ApiModelProperty(name = "architecture", position = 5)
+        @ApiModelProperty(name = "architecture", position = 1)
         private String architecture = null;
 
         @JsonProperty(value = "device")
-        @ApiModelProperty(name = "device", position = 6)
+        @ApiModelProperty(name = "device", position = 2)
         private String device = null;
 
         @JsonProperty(value = "isMobile")
-        @ApiModelProperty(name = "isMobile", position = 7)
+        @ApiModelProperty(name = "isMobile", position = 3)
         private boolean mobile;
 
         @JsonProperty(value = "hasTouchScreen")
-        @ApiModelProperty(name = "hasTouchScreen", position = 8)
+        @ApiModelProperty(name = "hasTouchScreen", position = 4)
         private boolean touch;
 
+        @JsonProperty(value = "brand")
+        @ApiModelProperty(name = "brand", position = 5)
+        private Brand brand = null;
+
+        @JsonProperty(value = "manufacturer")
+        @ApiModelProperty(name = "manufacturer", position = 6)
+        private Manufacturer manufacturer = null;
 
         private static class Brand implements Serializable {
             @JsonProperty(value = "name")
@@ -799,8 +533,14 @@ public class UserSearchAgentResponse implements Serializable {
             private String website = null;
 
             public Brand(String name, String website) {
-                this.name = name;
-                this.website = website;
+
+                if (!String.valueOf(name).equalsIgnoreCase("Unknown")) {
+                    this.name = name;
+                }
+
+                if (!String.valueOf(website).equalsIgnoreCase("")) {
+                    this.website = website;
+                }
             }
 
             @JsonIgnore
@@ -824,8 +564,14 @@ public class UserSearchAgentResponse implements Serializable {
             private String website = null;
 
             public Manufacturer(String name, String website) {
-                this.name = name;
-                this.website = website;
+
+                if (!String.valueOf(name).equalsIgnoreCase("Unknown")) {
+                    this.name = name;
+                }
+
+                if (!String.valueOf(website).equalsIgnoreCase("")) {
+                    this.website = website;
+                }
             }
 
             @JsonIgnore
@@ -838,7 +584,6 @@ public class UserSearchAgentResponse implements Serializable {
                 return website;
             }
         }
-
 
         public Device(final String deviceType,
             final boolean mobile,
@@ -854,22 +599,6 @@ public class UserSearchAgentResponse implements Serializable {
                 this.deviceType = deviceType;
             }
 
-            if (!String.valueOf(brand).equalsIgnoreCase("Unknown")) {
-                this.brand = brand;
-            }
-
-            if (!String.valueOf(brandWebsite).equalsIgnoreCase("")) {
-                this.brandWebsite = brandWebsite;
-            }
-
-            if (!String.valueOf(manufacturer).equalsIgnoreCase("Unknown")) {
-                this.manufacturer = manufacturer;
-            }
-
-            if (!String.valueOf(manufacturerWebsite).equalsIgnoreCase("")) {
-                this.manufacturerWebsite = manufacturerWebsite;
-            }
-
             if (!String.valueOf(architecture).equalsIgnoreCase("")) {
                 this.architecture = architecture;
             }
@@ -878,26 +607,11 @@ public class UserSearchAgentResponse implements Serializable {
                 this.device = device;
             }
 
+            this.brand = new Brand(brand, brandWebsite);
+            this.manufacturer = new Manufacturer(manufacturer, manufacturerWebsite);
+
             this.touch = touch;
             this.mobile = mobile;
-        }
-
-        @JsonIgnore
-        public String getBrandWebsite() {
-            return brandWebsite;
-        }
-
-        public void setBrandWebsite(String brandWebsite) {
-            this.brandWebsite = brandWebsite;
-        }
-
-        @JsonIgnore
-        public String getManufacturerWebsite() {
-            return manufacturerWebsite;
-        }
-
-        public void setManufacturerWebsite(String manufacturerWebsite) {
-            this.manufacturerWebsite = manufacturerWebsite;
         }
 
         @JsonIgnore
@@ -916,24 +630,6 @@ public class UserSearchAgentResponse implements Serializable {
 
         public void setDeviceType(final String deviceType) {
             this.deviceType = deviceType;
-        }
-
-        @JsonIgnore
-        public String getBrand() {
-            return brand;
-        }
-
-        public void setBrand(final String brand) {
-            this.brand = brand;
-        }
-
-        @JsonIgnore
-        public String getManufacturer() {
-            return manufacturer;
-        }
-
-        public void setManufacturer(final String manufacturer) {
-            this.manufacturer = manufacturer;
         }
 
         @JsonIgnore
