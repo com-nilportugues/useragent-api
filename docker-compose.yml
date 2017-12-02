@@ -1,9 +1,44 @@
 version: '2'
 services:
+    public-nginx:
+        build: ./etc/docker/nginx
+        image: useragent/nginx
+        container_name: public.nginx
+        ports:
+          - 80:80
+          - 443:443
+        networks:
+          public_web:
+            ipv4_address: 10.0.0.2
+        volumes:
+          - ./var/logs/nginx/:/var/log/nginx
+          - ./etc/docker/nginx/sites-available/useragent.api.nilportugues.com:/etc/nginx/sites-enabled/useragent.api.nilportugues.com
+        extra_hosts:
+          - "useragent.internal:10.0.0.3"
+        restart: always
+
+    useragent-java:
+         container_name: useragent.java
+         build: ./etc/docker/java8
+         image: useragent/java
+         networks:
+           public_web:
+             ipv4_address: 10.0.0.3
+         volumes:
+           - ./target/app-0.0.1-SNAPSHOT.jar:/var/www/application.jar
+         extra_hosts:
+           - "useragent.internal:127.0.0.1"
+         expose:
+           - 8080
+         restart: always
+
 
     useragent-influxdb:
         container_name: useragent.influxdb
         image: influxdb:1.2.4
+        networks:
+          public_web:
+            ipv4_address: 10.0.0.4
         expose:
             - 8083
             - 8086
@@ -14,37 +49,6 @@ services:
          - INFLUXDB_ADMIN_USER=useragent_admin_password
          - INFLUXDB_USER=useragent_user
          - INFLUXDB_USER_PASSWORD=useragent_password
-
-    useragent-java:
-         container_name: useragent.java
-         build: ./etc/docker/java8
-         image: useragent/java
-         networks:
-           public_web:
-             ipv4_address: 10.0.0.2
-         volumes:
-           - ./target/app-0.0.1-SNAPSHOT.jar:/var/www/application.jar
-         extra_hosts:
-           - "useragent.internal:127.0.0.1"
-         expose:
-           - 8080
-         restart: always
-
-    public-nginx:
-        build: ./etc/docker/nginx
-        image: useragent/nginx
-        container_name: public.nginx
-        ports:
-          - 80:80
-          - 443:443
-        networks:
-          public_web:
-            ipv4_address: 10.0.0.3
-        volumes:
-          - ./var/logs/nginx/:/var/log/nginx
-          - ./etc/docker/nginx/sites-available/useragent.api.nilportugues.com:/etc/nginx/sites-enabled/useragent.api.nilportugues.com
-        extra_hosts:
-          - "useragent.internal:10.0.0.2"
         restart: always
 
 networks:
