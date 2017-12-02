@@ -4,9 +4,9 @@ services:
     useragent-influxdb:
         container_name: useragent.influxdb
         image: influxdb:1.2.4
-        ports:
-            - 8083:8083
-            - 8086:8086
+        expose:
+            - 8083
+            - 8086
         environment:
          - INFLUXDB_DB=useragent_metrics
          - INFLUXDB_ADMIN_ENABLED=true
